@@ -13,13 +13,15 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class TratarErroPagamentoService {
+public class TratarErroEnvioService {
+
     private final CompraRepository compraRepository;
 
     public void execute(InformarErroResponse informarErroResponse){
-        log.info("Tratando a resposta de erro do Pagamento {}", informarErroResponse);
+        log.info("Tratando a resposta de erro do Envio {}", informarErroResponse);
         Compra compra = compraRepository.findById(UUID.fromString(informarErroResponse.getCompraId())).get();
         compra.setStatus(StatusCompra.ERRO);
         compraRepository.save(compra);
     }
 }
+
