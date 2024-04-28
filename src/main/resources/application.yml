@@ -64,3 +64,5 @@ negocio:
     fila: informar-erro-estoque
   envio:
     fila: informar-erro-envio
+  error:
+    routingkey: "*-Error-*"
