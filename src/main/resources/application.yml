@@ -57,3 +57,10 @@ negocio:
     url: http://localhost:9081
   pagamento:
     url: http://localhost:9082
+    fila: informar-erro-pagamento
+  compra:
+    fila: atualizar-info-compra
+  estoque:
+    fila: informar-erro-estoque
+  envio:
+    fila: informar-erro-envio
