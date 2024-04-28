@@ -8,6 +8,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 import tech.ada.compraservice.payloads.response.InformarErroResponse;
+import tech.ada.compraservice.service.TratarErroPagamentoService;
 
 import java.io.IOException;
 
@@ -16,13 +17,15 @@ import java.io.IOException;
 @Slf4j
 public class InformarErroPagamentoConsumer {
     private final ObjectMapper objectMapper;
+    private final TratarErroPagamentoService tratarErroPagamentoService;
 
     @RabbitListener(queues = {"${negocio.pagamento.fila}"})
     public void consumer(Message message , Channel channel)  {
         try {
             String mensagemString = new String(message.getBody());
             InformarErroResponse informarErro = objectMapper.readValue(mensagemString, InformarErroResponse.class);
-            log.info("mensagem consumida  {}", informarErro);
+            log.info("Mensagem de erro do Pagamento consumida {}", informarErro);
+            tratarErroPagamentoService.execute(informarErro);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
         } catch (IOException e) {
             throw new RuntimeException(e);
