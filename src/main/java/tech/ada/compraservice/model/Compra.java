@@ -16,4 +16,6 @@ public class Compra {
     private UUID id;
 
     private StatusCompra status;
+
+    private String carrinhoId;
 }
