@@ -11,7 +11,12 @@ O Compra Service é responsável por processar solicitações de compra, interag
 - **Update Compra Queue**: Envia uma mensagem para uma fila (queue) para atualizar o status da compra em outro sistema.
 - **Error Topic**: Envia mensagens de erro para um tópico (topic) para monitoramento e tratamento.
 
-A comunicação entre este microservice e os demais ocorre por meio de chamadas RESTful API.
+A comunicação entre este microservice e os demais ocorre por meio de chamadas RESTful API e mensageria, conforme imagem abaixo.
+
+<p align="center">
+    <img src="https://i.imgur.com/o76bOgI.png" alt="Comunicação do microsserviço de compra com os demais microsserviços">
+</p>
+
 
 ## Tecnologias Utilizadas
 
@@ -40,8 +45,6 @@ A comunicação entre este microservice e os demais ocorre por meio de chamadas 
 ## Documentação da API
 
 Para acessar a documentação da API (Swagger), visite: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
-
-|
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT.
