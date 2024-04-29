@@ -9,5 +9,5 @@ import tech.ada.compraservice.payloads.response.CarrinhoResponse;
 @FeignClient(name = "carrinhoClient", url = "${negocio.carrinho.url}")
 public interface CarrinhoClient {
     @RequestMapping(method = RequestMethod.GET, value = "/{carrinhoId}")
-    String consultarCarrinho(@PathVariable("carrinhoId") String carrinhoId);
+    CarrinhoResponse consultarCarrinho(@PathVariable("carrinhoId") String carrinhoId);
 }
