@@ -17,7 +17,8 @@ A comunicação entre este microservice e os demais ocorre por meio de chamadas 
 
 - Java
 - Spring Boot
-- Spring WebClient (para comunicação REST com outros microservices)
+- OpenFeign (para comunicação REST com outros microservices)
+- RabbitMQ
 - OpenAPI (para documentação da API)
 
 ## Estrutura do Projeto
