@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tech.ada.compraservice.payloads.request.CompraRequest;
 import tech.ada.compraservice.payloads.response.CompraResponse;
+import tech.ada.compraservice.service.ConsultarCompraService;
 import tech.ada.compraservice.service.RealizarCompraService;
 
 @RestController
@@ -16,6 +17,7 @@ import tech.ada.compraservice.service.RealizarCompraService;
 public class CompraController {
 
     private final RealizarCompraService realizarCompraService;
+    private final ConsultarCompraService consultarCompraService;
 
     @PostMapping(value = "/compras")
     @Operation(summary = "Realizar a compra")
@@ -27,4 +29,16 @@ public class CompraController {
     public CompraResponse realizarCompra(@RequestBody CompraRequest compraRequest){
         return realizarCompraService.realizarCompra(compraRequest);
     }
+
+    @GetMapping(value = "/compras/{id}")
+    @Operation(summary = "Verificar status da compra")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Dados ca compra"),
+            @ApiResponse(responseCode = "404", description = "Erro ao consultar compra"),
+    })
+    public CompraResponse consultarStatusCompra(@PathVariable(name = "id") String compraId) {
+        return consultarCompraService.execute(compraId);
+    }
+
+
 }

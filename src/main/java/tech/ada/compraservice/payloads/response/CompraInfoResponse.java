@@ -3,9 +3,8 @@ package tech.ada.compraservice.payloads.response;
 import lombok.Data;
 
 @Data
-public class CompraResponse {
+public class CompraInfoResponse {
     private String compraId;
-    private String psgamentoId;
+    private String pagamentoId;
     private String envioId;
-    private String status;
 }

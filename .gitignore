@@ -48,6 +48,7 @@ replay_pid*
 # Exclude Gradle and Maven build directories
 out/
 build/
+target/
 
 # Exclude .idea/ and .iml files for Rider and other IntelliJ based IDEs
 .rider/
